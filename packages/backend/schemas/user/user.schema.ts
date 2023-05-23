@@ -15,5 +15,5 @@ export class User {
 }
 
 export type PasswordOmitUser = Omit<User, 'passPhrase'>;
-export type UserDocumet = User & BaseDocument;
+export type UserDocument = User & BaseDocument;
 export const UserSchema = SchemaFactory.createForClass(User);
