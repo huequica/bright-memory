@@ -8,6 +8,6 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async find(userId: string): Promise<UserDocument> {
-    return this.userModel.findOne({name: userId});
+    return this.userModel.findOne({ name: userId });
   }
 }
