@@ -9,7 +9,7 @@ export class UsersService {
 
   async find(userId: string, includePassPhrase = false): Promise<UserDocument> {
     return this.userModel
-      .findOne({ name: userId })
-      .select(includePassPhrase ? '+passPhrase' : undefined);
+      .findOne({ loginName: userId })
+      .select(includePassPhrase ? '+passPhrase' : '');
   }
 }
