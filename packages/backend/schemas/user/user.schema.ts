@@ -10,10 +10,11 @@ export class User {
   @Prop({ required: true, unique: true })
   loginName: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, select: false })
   passPhrase: string;
 }
 
 export type PasswordOmitUser = Omit<User, 'passPhrase'>;
 export type UserDocument = User & BaseDocument;
+export type PasswordOmitUserDocument = Omit<User, 'passPhrase'>;
 export const UserSchema = SchemaFactory.createForClass(User);

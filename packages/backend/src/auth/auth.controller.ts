@@ -19,7 +19,7 @@ export class AuthController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
-  profile(@Request() req: { user: UserDocument }) {
+  profile(@Request() req: { user: PasswordOmitUser }) {
     return req.user;
   }
 }

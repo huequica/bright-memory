@@ -20,7 +20,7 @@ export class AuthService {
     name: User['loginName'],
     pass: User['passPhrase']
   ): Promise<PasswordOmitUser> {
-    const user = await this.usersService.find(name);
+    const user = await this.usersService.find(name, true);
 
     if (!compareSync(pass, user.passPhrase)) {
       throw new Error('Authentication Failed!');

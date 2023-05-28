@@ -7,7 +7,9 @@ import { User, UserDocument } from '@/schemas/user/user.schema';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async find(userId: string): Promise<UserDocument> {
-    return this.userModel.findOne({ name: userId });
+  async find(userId: string, includePassPhrase = false): Promise<any> {
+    return this.userModel
+      .findOne({ name: userId })
+      .select(includePassPhrase ? '+passPhrase' : undefined);
   }
 }
