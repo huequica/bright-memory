@@ -23,7 +23,8 @@
     "lint:js:fix": "eslint --fix --ext .js,.ts .",
     "lint:code": "prettier .",
     "lint:code:fix": "prettier --write .",
-    "lint:fix": "npm run lint:js:fix && npm run lint:code:fix"
+    "lint:fix": "npm run lint:js:fix && npm run lint:code:fix",
+    "testdata": "tsx testdata/index.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
