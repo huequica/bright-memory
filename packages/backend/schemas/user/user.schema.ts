@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { BaseDocument } from 'bright_memory_backend';
 
-@Schema({ timestamps: true, versionKey: 'versionn' })
+@Schema({ timestamps: true, versionKey: 'version' })
 export class User {
   // ユーザーの表示名
   @Prop({ required: true })
