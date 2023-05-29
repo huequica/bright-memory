@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { BaseDocument } from 'bright_memory_backend';
 
-@Schema({ timestamps: true, versionKey: 'versionn' })
+@Schema({ timestamps: true, versionKey: 'version' })
 export class User {
   // ユーザーの表示名
   @Prop({ required: true })
@@ -10,10 +10,11 @@ export class User {
   @Prop({ required: true, unique: true })
   loginName: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, select: false })
   passPhrase: string;
 }
 
 export type PasswordOmitUser = Omit<User, 'passPhrase'>;
-export type UserDocumet = User & BaseDocument;
+export type UserDocument = User & BaseDocument;
+export type PasswordOmitUserDocument = Omit<User, 'passPhrase'>;
 export const UserSchema = SchemaFactory.createForClass(User);
