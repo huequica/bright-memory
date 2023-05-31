@@ -21,7 +21,7 @@ export class Entry {
   note: string;
 
   @Prop()
-  ogImageLink: string;
+  ogpImageLink: string;
 
   // TODO: タグの設計
 }
