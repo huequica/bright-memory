@@ -4,6 +4,7 @@ import { Entry, EntrySchema } from '@/schemas/entry/entry.schema';
 import { modifyQuery } from '@/src/core/modifyQuery';
 import { EntryService } from './entry.service';
 import { EntryController } from './entry.controller';
+import { BrowserModule } from '@/src/browser/browser.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { EntryController } from './entry.controller';
         },
       },
     ]),
+    BrowserModule,
   ],
   controllers: [EntryController],
   providers: [EntryService],
