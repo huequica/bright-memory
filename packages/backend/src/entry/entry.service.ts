@@ -13,12 +13,12 @@ export class EntryService {
   ) {}
 
   async create(url: string, owner: UserDocument): Promise<EntryDocument> {
-    const { title } = await this.browser.getWebPageDetails(url);
+    const { title, ogpImageLink } = await this.browser.getWebPageDetails(url);
 
     const created = new this.entryModel<Entry>({
       url,
       title,
-      ogpImageLink: '',
+      ogpImageLink,
       isFavorite: false,
       note: '',
       owner: owner.toJSON(),
