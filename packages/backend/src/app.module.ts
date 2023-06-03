@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { EntryModule } from './entry/entry.module';
+import { BrowserModule } from './browser/browser.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { EntryModule } from './entry/entry.module';
     AuthModule,
     ConfigModule.forRoot(),
     EntryModule,
+    BrowserModule,
   ],
   controllers: [],
   providers: [],
