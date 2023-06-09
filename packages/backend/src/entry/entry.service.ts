@@ -28,4 +28,8 @@ export class EntryService {
     console.debug(res.createdAt);
     return res;
   }
+
+  async find(id: string, owner: UserDocument): Promise<EntryDocument> {
+    return this.entryModel.findOne({ _id: id, owner: owner }).exec();
+  }
 }
