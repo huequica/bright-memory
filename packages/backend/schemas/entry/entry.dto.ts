@@ -1,8 +1,19 @@
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsDefined,
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+  ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateEntryDTO {
   @IsNotEmpty()
-  @IsString()
+  @IsUrl()
   url: string;
 }
 
@@ -21,6 +32,32 @@ export class UpdateEntryDTO {
   isFavorite: boolean;
 }
 
+const SortVariables = {
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const;
+
+const OrderVariables = {
+  desc: 'desc',
+  asc: 'asc',
+} as const;
+
+export class Pagination {
+  @IsDefined()
+  @IsNumber()
+  pageNumber: number;
+
+  @IsOptional()
+  @IsString()
+  @IsEnum(SortVariables)
+  sort: typeof SortVariables[keyof typeof SortVariables];
+
+  @IsOptional()
+  @IsString()
+  @IsEnum(OrderVariables)
+  order: typeof OrderVariables[keyof typeof OrderVariables];
+}
+
 export class SearchEntryDTO {
   @IsOptional()
   @IsString()
@@ -31,10 +68,15 @@ export class SearchEntryDTO {
   note: string;
 
   @IsOptional()
-  @IsString()
+  @IsUrl()
   url: string;
 
   @IsOptional()
   @IsBoolean()
   isFavorite: boolean;
+
+  @IsDefined()
+  @ValidateNested()
+  @Type(() => Pagination)
+  pagination: Pagination;
 }
