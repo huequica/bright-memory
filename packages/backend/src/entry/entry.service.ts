@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Entry, EntryDocument } from '@/schemas/entry/entry.schema';
 import { UserDocument } from '@/schemas/user/user.schema';
 import { BrowserService } from '@/src/browser/browser.service';
+import { SearchEntryDTO } from '@/schemas/entry/entry.dto';
 
 @Injectable()
 export class EntryService {
@@ -34,6 +35,15 @@ export class EntryService {
     if (!res) {
       throw new NotFoundException(`${id} is not found!`);
     }
+    return res;
+  }
+
+  async search(
+    search: SearchEntryDTO,
+    user: UserDocument
+  ): Promise<EntryDocument[]> {
+    const res = await this.entryModel.find({ ...search, owner: user }).exec();
+    console.log(res);
     return res;
   }
 }
