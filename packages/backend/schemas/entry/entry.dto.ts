@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsEmpty,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateEntryDTO {
   @IsNotEmpty()
@@ -17,6 +23,24 @@ export class UpdateEntryDTO {
   @IsString()
   note: string;
 
+  @IsBoolean()
+  isFavorite: boolean;
+}
+
+export class SearchEntryDTO {
+  @IsOptional()
+  @IsString()
+  title: string;
+
+  @IsOptional()
+  @IsString()
+  note: string;
+
+  @IsOptional()
+  @IsString()
+  url: string;
+
+  @IsOptional()
   @IsBoolean()
   isFavorite: boolean;
 }
