@@ -34,6 +34,9 @@ export class EntryController {
     return this.entryService.find(entryId, req.user);
   }
 
+  /**
+   * TODO: 検索の件数とページングの実装
+   */
   @Post('search')
   async search(
     @Body() search: SearchEntryDTO,
