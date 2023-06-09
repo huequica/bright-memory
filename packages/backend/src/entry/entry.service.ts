@@ -42,8 +42,6 @@ export class EntryService {
     search: SearchEntryDTO,
     user: UserDocument
   ): Promise<EntryDocument[]> {
-    const res = await this.entryModel.find({ ...search, owner: user }).exec();
-    console.log(res);
-    return res;
+    return this.entryModel.find({ ...search, owner: user }).exec();
   }
 }
