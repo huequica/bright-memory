@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Entry, EntryDocument } from '@/schemas/entry/entry.schema';
@@ -30,6 +30,10 @@ export class EntryService {
   }
 
   async find(id: string, owner: UserDocument): Promise<EntryDocument> {
-    return this.entryModel.findOne({ _id: id, owner: owner }).exec();
+    const res = await this.entryModel.findOne({ _id: id, owner: owner }).exec();
+    if (!res) {
+      throw new NotFoundException(`${id} is not found!`);
+    }
+    return res;
   }
 }
