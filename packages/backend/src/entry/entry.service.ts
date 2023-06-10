@@ -42,6 +42,18 @@ export class EntryService {
     search: SearchEntryDTO,
     user: UserDocument
   ): Promise<EntryDocument[]> {
-    return this.entryModel.find({ ...search, owner: user }).exec();
+    const maximumDocumentLength = search.pagination.size;
+
+    // pagination が余分なので排除してから find に入れる
+    const filteredSearchParams = Object.fromEntries(
+      Object.entries(search).filter(([key]) => ['pagination'].includes(key))
+    );
+
+    // TODO: ソートを実装
+    return this.entryModel
+      .find({ ...filteredSearchParams, owner: user })
+      .limit(maximumDocumentLength)
+      .skip(search.pagination.pageNumber * maximumDocumentLength)
+      .exec();
   }
 }

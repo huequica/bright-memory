@@ -7,6 +7,8 @@ import {
   IsOptional,
   IsString,
   IsUrl,
+  Max,
+  Min,
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
@@ -45,7 +47,14 @@ const OrderVariables = {
 export class Pagination {
   @IsDefined()
   @IsNumber()
+  @Min(0)
   pageNumber: number;
+
+  @IsDefined()
+  @IsNumber()
+  @Max(20)
+  @Min(0)
+  size: number;
 
   @IsOptional()
   @IsString()

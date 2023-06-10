@@ -42,6 +42,7 @@ export class EntryController {
     @Body() search: SearchEntryDTO,
     @Request() req: { user: UserDocument }
   ) {
+    console.log(search);
     return this.entryService.search(search, req.user);
   }
 }
