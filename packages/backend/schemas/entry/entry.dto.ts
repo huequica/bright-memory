@@ -12,8 +12,10 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateEntryDTO {
+  @ApiProperty()
   @IsNotEmpty()
   @IsUrl()
   url: string;
@@ -45,22 +47,26 @@ const OrderVariables = {
 } as const;
 
 export class Pagination {
+  @ApiProperty()
   @IsDefined()
   @IsNumber()
   @Min(0)
   pageNumber: number;
 
+  @ApiProperty()
   @IsDefined()
   @IsNumber()
   @Max(20)
   @Min(0)
   size: number;
 
+  @ApiPropertyOptional({ enumName: 'sortOperators', enum: SortVariables })
   @IsOptional()
   @IsString()
   @IsEnum(SortVariables)
   sort: typeof SortVariables[keyof typeof SortVariables];
 
+  @ApiPropertyOptional({ enumName: 'orderOperators', enum: OrderVariables })
   @IsOptional()
   @IsString()
   @IsEnum(OrderVariables)
@@ -68,22 +74,27 @@ export class Pagination {
 }
 
 export class SearchEntryDTO {
+  @ApiPropertyOptional()
   @IsOptional()
   @IsString()
   title: string;
 
+  @ApiPropertyOptional()
   @IsOptional()
   @IsString()
   note: string;
 
+  @ApiPropertyOptional()
   @IsOptional()
   @IsUrl()
   url: string;
 
+  @ApiPropertyOptional()
   @IsOptional()
   @IsBoolean()
   isFavorite: boolean;
 
+  @ApiPropertyOptional()
   @IsDefined()
   @ValidateNested()
   @Type(() => Pagination)
