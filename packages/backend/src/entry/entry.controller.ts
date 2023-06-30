@@ -12,7 +12,9 @@ import { EntryService } from './entry.service';
 import { CreateEntryDTO, SearchEntryDTO } from '@/schemas/entry/entry.dto';
 import { UserDocument } from '@/schemas/user/user.schema';
 import { EntryDocument } from '@/schemas/entry/entry.schema';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('entry')
 @UseGuards(AuthGuard('jwt'))
 @Controller('entry')
 export class EntryController {
