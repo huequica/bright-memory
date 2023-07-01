@@ -3,10 +3,24 @@ paths:
   /auth/login:
     post:
       operationId: login
-      parameters: []
+      parameters:
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        '201':
+        '200':
           description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
       tags: &a1
         - auth
   /auth/profile:
@@ -16,6 +30,10 @@ paths:
       responses:
         '200':
           description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProfileResponse'
       tags: *a1
   /entry/new:
     post:
@@ -68,6 +86,38 @@ tags: []
 servers: []
 components:
   schemas:
+    LoginResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+      required:
+        - access_token
+    GetProfileResponse:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: for internal management
+        screenName:
+          type: string
+        loginName:
+          type: string
+        version:
+          type: number
+        createdAt:
+          type: string
+          description: ISO String Date
+        updatedAt:
+          type: string
+          description: ISO String Date
+      required:
+        - _id
+        - screenName
+        - loginName
+        - version
+        - createdAt
+        - updatedAt
     CreateEntryDTO:
       type: object
       properties:
