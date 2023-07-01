@@ -6,6 +6,8 @@ import {
   SwaggerDocumentOptions,
   SwaggerModule,
 } from '@nestjs/swagger';
+import fs from 'fs';
+import yaml from 'yaml';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,6 +24,11 @@ async function bootstrap() {
   };
 
   const document = SwaggerModule.createDocument(app, config, options);
+  fs.writeFileSync(
+    'docs/openAPISchema.yaml',
+    yaml.stringify(document, { singleQuote: true })
+  );
+
   SwaggerModule.setup('api', app, document);
 
   await app.listen(53250);

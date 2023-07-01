@@ -1,0 +1,114 @@
+openapi: 3.0.0
+paths:
+  /auth/login:
+    post:
+      operationId: login
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: &a1
+        - auth
+  /auth/profile:
+    get:
+      operationId: profile
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *a1
+  /entry/new:
+    post:
+      operationId: createEntry
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEntryDTO'
+      responses:
+        '201':
+          description: ''
+      tags: &a2
+        - entry
+  '/entry/{entryId}':
+    get:
+      operationId: find
+      parameters:
+        - name: entryId
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags: *a2
+  /entry/search:
+    post:
+      operationId: search
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchEntryDTO'
+      responses:
+        '201':
+          description: ''
+      tags: *a2
+info:
+  title: Bright-Memory-API
+  description: Bright-Memory Backend service documents
+  version: 0.0.1
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    CreateEntryDTO:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+        - url
+    sortOperators:
+      type: string
+      enum:
+        - createdAt
+        - updatedAt
+    orderOperators:
+      type: string
+      enum:
+        - desc
+        - asc
+    Pagination:
+      type: object
+      properties:
+        pageNumber:
+          type: number
+        size:
+          type: number
+        sort:
+          $ref: '#/components/schemas/sortOperators'
+        order:
+          $ref: '#/components/schemas/orderOperators'
+      required:
+        - pageNumber
+        - size
+    SearchEntryDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        note:
+          type: string
+        url:
+          type: string
+        isFavorite:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
