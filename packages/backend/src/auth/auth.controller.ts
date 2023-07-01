@@ -7,7 +7,7 @@ import {
   GetProfileResponse,
   LoginResponse,
   LoginRequestParam,
-} from '@/schemas/user/response';
+} from './documentClasses';
 
 @ApiTags('auth')
 @Controller('auth')
