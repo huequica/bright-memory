@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
+    'storybook-addon-next',
     {
       name: '@storybook/addon-styling',
       options: {},
