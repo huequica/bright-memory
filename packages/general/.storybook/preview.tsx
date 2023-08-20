@@ -1,8 +1,16 @@
 import type { Decorator, Preview } from '@storybook/react';
-import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
+import { ThemeProvider } from '@mui/material';
+import { defaultTheme } from '@/components/Theme/ThemeRegistry/theme';
 
-// Import your fontface CSS files here
-// Don't have any? We recommend installing and using @fontsource/roboto
+export const decorators: Decorator[] = [
+  (Story, context) => {
+    return (
+      <ThemeProvider theme={defaultTheme}>
+        <Story {...context} />
+      </ThemeProvider>
+    );
+  },
+];
 
 const preview: Preview = {
   parameters: {
@@ -14,13 +22,6 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <ThemeRegistry>
-        <Story />
-      </ThemeRegistry>
-    ),
-  ],
 };
 
 export default preview;
