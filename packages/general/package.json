@@ -54,10 +54,5 @@
     "eslint-plugin-storybook": "^0.6.13",
     "prettier": "^2.3.2",
     "storybook": "^7.3.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
