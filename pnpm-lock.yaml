@@ -257,9 +257,6 @@ importers:
       storybook:
         specifier: ^7.3.2
         version: 7.3.2
-      storybook-addon-next:
-        specifier: ^1.8.0
-        version: 1.8.0(@storybook/addon-actions@7.3.2)(@storybook/addons@7.3.2)(next@13.4.5)(postcss@8.4.28)(react-dom@18.2.0)(react@18.2.0)(webpack@5.83.1)
 
 packages:
 
@@ -13632,37 +13629,6 @@ packages:
 
   /store2@2.14.2:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
-    dev: true
-
-  /storybook-addon-next@1.8.0(@storybook/addon-actions@7.3.2)(@storybook/addons@7.3.2)(next@13.4.5)(postcss@8.4.28)(react-dom@18.2.0)(react@18.2.0)(webpack@5.83.1):
-    resolution: {integrity: sha512-hCDRkgTllb9Qz14u+oafnhUbKMWZ/YKgcVBHDc9ilbsd9I3bHqBwpldfTelL/ahfo2jDqPnCQVnQkXV8U+fr2Q==}
-    peerDependencies:
-      '@storybook/addon-actions': ^6.0.0 || ^7.0.0
-      '@storybook/addons': ^6.0.0 || ^7.0.0
-      next: ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@storybook/addon-actions': 7.3.2(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
-      '@storybook/addons': 7.3.2(react-dom@18.2.0)(react@18.2.0)
-      image-size: 1.0.2
-      loader-utils: 3.2.1
-      next: 13.4.5(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
-      postcss-loader: 7.3.3(postcss@8.4.28)(webpack@5.83.1)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      resolve-url-loader: 5.0.0
-      sass-loader: 13.3.2(webpack@5.83.1)
-      semver: 7.5.4
-      tsconfig-paths: 4.2.0
-      tsconfig-paths-webpack-plugin: 4.1.0
-    transitivePeerDependencies:
-      - fibers
-      - node-sass
-      - postcss
-      - sass
-      - sass-embedded
-      - webpack
     dev: true
 
   /storybook@7.3.2:

@@ -1,13 +1,16 @@
-import type { Decorator, Preview } from '@storybook/react';
+import { Preview, Decorator } from '@storybook/react';
 import { ThemeProvider } from '@mui/material';
+import { ThemeProvider as Emotion10ThemeProvider } from '@emotion/react';
 import { defaultTheme } from '@/components/Theme/ThemeRegistry/theme';
 
 export const decorators: Decorator[] = [
   (Story, context) => {
     return (
-      <ThemeProvider theme={defaultTheme}>
-        <Story {...context} />
-      </ThemeProvider>
+      <Emotion10ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={defaultTheme}>
+          <Story {...context} />
+        </ThemeProvider>
+      </Emotion10ThemeProvider>
     );
   },
 ];
@@ -20,6 +23,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    nextjs: {
+      appDirectory: true,
     },
   },
 };
