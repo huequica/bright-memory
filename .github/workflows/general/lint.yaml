@@ -8,16 +8,7 @@ jobs:
     name: front-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
-      - name: using node 16.13.0
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18.16.0
-
-      - name: module install
-        run: pnpm i --frozen-lockfile
-
+      - uses: ./.github/actions/packageInstall
       - name: lint check
         uses: reviewdog/action-eslint@v1
         with:

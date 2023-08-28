@@ -1,0 +1,14 @@
+name: packageInstall
+description: install pnpm package
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v1
+
+    - name: using node 16.13.0
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.16.0
+
+    - name: module install
+      run: pnpm i --frozen-lockfile
