@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -13,5 +14,6 @@ export const Default: Story = {
   args: {
     children: 'Text',
     variant: 'contained',
+    onClick: action('onClick'),
   },
 };

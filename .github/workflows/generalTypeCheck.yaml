@@ -8,7 +8,7 @@ jobs:
     name: front-typeCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/packageInstall
+      - uses: .github/actions/packageInstall
       - name: run typeChecking
         run: pnpm run typeCheck
         working-directory: packages/general

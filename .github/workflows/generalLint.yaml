@@ -8,7 +8,7 @@ jobs:
     name: front-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/packageInstall
+      - uses: .github/actions/packageInstall
       - name: lint check
         uses: reviewdog/action-eslint@v1
         with:
