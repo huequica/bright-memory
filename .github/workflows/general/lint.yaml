@@ -21,6 +21,6 @@ jobs:
       - name: lint check
         uses: reviewdog/action-eslint@v1
         with:
-          repoter: github-pr-review
+          reporter: github-pr-review
           eslint-flags: --ext .js,.ts .
           workdir: packages/general
