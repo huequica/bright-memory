@@ -14,6 +14,7 @@ export const Default: Story = {
   args: {
     children: 'Text',
     variant: 'contained',
+    color: 'secondary',
     onClick: action('onClick'),
   },
 };
