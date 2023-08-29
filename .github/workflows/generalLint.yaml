@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: 18.16.0
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+
       - name: module install
         shell: bash
         run: pnpm i --frozen-lockfile
