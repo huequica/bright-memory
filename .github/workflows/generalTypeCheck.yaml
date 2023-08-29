@@ -3,19 +3,25 @@ on:
   pull_request:
     paths:
       - packages/general/**/*
+    types: [synchronize, opened, reopened, ready_for_review]
+
 jobs:
   typeCheck:
     name: front-typeCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
-      - name: using node
+      - name: using node 16.13.0
         uses: actions/setup-node@v2
         with:
           node-version: 18.16.0
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+
       - name: module install
+        shell: bash
         run: pnpm i --frozen-lockfile
 
       - name: run typeChecking

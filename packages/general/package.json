@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0",
+    "@storybook/addon-actions": "^7.3.2",
     "@storybook/addon-essentials": "^7.3.2",
     "@storybook/addon-interactions": "^7.3.2",
     "@storybook/addon-links": "^7.3.2",
