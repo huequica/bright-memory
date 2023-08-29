@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - packages/general/**/*
+  push:
+    paths:
+      - packages/general/**/*
+      - .github/**/*
 jobs:
   typeCheck:
     name: front-typeCheck

@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - packages/general/**/*
+  push:
+    paths:
+      - packages/general/**/*
+      - .github/**/*
+
 jobs:
   lint:
     name: front-lint
