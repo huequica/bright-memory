@@ -2,9 +2,8 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { FormGroup } from '@mui/material';
 import { loginFormSchema } from '../model';
-import { TextInput } from '@/components/Form';
+import { FormGroup, TextInput } from '@/components/Form';
 import { Button } from '@/components/Button';
 
 type LoginFormValue = z.infer<typeof loginFormSchema>;
