@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { loginFormSchema } from '../model';
 import { FormGroup, TextInput } from '@/components/Form';
-import { Button } from '@/components/Button';
+import { SubmitButton } from '@/components/Button';
 
 type LoginFormValue = z.infer<typeof loginFormSchema>;
 
@@ -40,9 +40,7 @@ export const LoginForm: FC<Props> = ({ onSubmit }) => {
           autoComplete={'current-password'}
         />
 
-        <Button variant={'contained'} type={'submit'}>
-          送信
-        </Button>
+        <SubmitButton>ログイン</SubmitButton>
       </FormGroup>
     </form>
   );
