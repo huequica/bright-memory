@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
+import { Default } from '@/layout/default';
 
 export const metadata = {
   title: 'Create Next App',
@@ -18,7 +19,9 @@ const RootLayout: React.FC<Props> = ({
   return (
     <html lang="ja">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <Default>{children}</Default>
+        </ThemeRegistry>
       </body>
     </html>
   );
