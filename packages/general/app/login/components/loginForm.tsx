@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { loginFormSchema } from '../model';
-import { FormGroup, TextInput } from '@/components/Form';
-import { SubmitButton } from '@/components/Button';
+import { FormGroup, TextInput, SubmitButton, Container } from '@/components';
 
 type LoginFormValue = z.infer<typeof loginFormSchema>;
 
@@ -23,25 +22,27 @@ export const LoginForm: FC<Props> = ({ onSubmit }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormGroup>
-        <TextInput
-          control={control}
-          errors={errors}
-          name={'loginName'}
-          label={'loginName'}
-        />
-        <TextInput
-          control={control}
-          errors={errors}
-          name={'password'}
-          label={'password'}
-          type={'password'}
-          autoComplete={'current-password'}
-        />
+    <Container>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormGroup>
+          <TextInput
+            control={control}
+            errors={errors}
+            name={'loginName'}
+            label={'loginName'}
+          />
+          <TextInput
+            control={control}
+            errors={errors}
+            name={'password'}
+            label={'password'}
+            type={'password'}
+            autoComplete={'current-password'}
+          />
 
-        <SubmitButton>ログイン</SubmitButton>
-      </FormGroup>
-    </form>
+          <SubmitButton>ログイン</SubmitButton>
+        </FormGroup>
+      </form>
+    </Container>
   );
 };
