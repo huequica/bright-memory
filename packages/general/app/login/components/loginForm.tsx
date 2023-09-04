@@ -30,6 +30,7 @@ export const LoginForm: FC<Props> = ({ onSubmit }) => {
             errors={errors}
             name={'loginName'}
             label={'loginName'}
+            autoComplete={'username'}
           />
           <TextInput
             control={control}
