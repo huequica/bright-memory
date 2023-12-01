@@ -90,6 +90,18 @@ export interface LoginResponse {
      * @type {string}
      * @memberof LoginResponse
      */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginResponse
+     */
     'access_token': string;
 }
 /**
