@@ -93,12 +93,12 @@ components:
           type: string
         name:
           type: string
-        access_token:
+        accessToken:
           type: string
       required:
         - id
         - name
-        - access_token
+        - accessToken
     GetProfileResponse:
       type: object
       properties:

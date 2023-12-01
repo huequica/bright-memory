@@ -102,7 +102,7 @@ export interface LoginResponse {
      * @type {string}
      * @memberof LoginResponse
      */
-    'access_token': string;
+    'accessToken': string;
 }
 /**
  * 

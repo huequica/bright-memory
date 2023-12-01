@@ -16,7 +16,7 @@ export class LoginResponse {
   name: string;
 
   @ApiProperty()
-  access_token: string;
+  accessToken: string;
 }
 
 export class GetProfileResponse {

@@ -43,7 +43,7 @@ export class AuthService {
     return {
       id: user.loginName,
       name: user.screenName,
-      access_token: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload),
     };
   }
 }
