@@ -22,7 +22,9 @@ export class AuthController {
   @ApiOkResponse({ type: LoginResponse })
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req: { user: PasswordOmitUser }) {
+  async login(
+    @Request() req: { user: PasswordOmitUser }
+  ): Promise<LoginResponse> {
     return this.auth.login(req.user);
   }
 

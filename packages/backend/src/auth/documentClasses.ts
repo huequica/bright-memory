@@ -10,6 +10,12 @@ export class LoginRequestParam {
 
 export class LoginResponse {
   @ApiProperty()
+  id: string;
+
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
   access_token: string;
 }
 
