@@ -11,20 +11,18 @@ const handler = NextAuth({
   },
   providers: [
     CredentialsProvider({
+      id: 'signIn',
       name: 'signIn',
       credentials: {
-        email: { label: 'Email', type: 'email' },
+        id: { label: 'id', type: 'string' },
         password: { label: 'password', type: 'password' },
       },
       authorize: async (credentials) => {
-        if (!credentials?.email || !credentials?.password) {
+        if (!credentials?.id || !credentials?.password) {
           return null;
         }
 
-        const res = await authApi.login(
-          credentials.email,
-          credentials.password
-        );
+        const res = await authApi.login(credentials.id, credentials.password);
 
         console.log(res.data.accessToken);
         return res.data;

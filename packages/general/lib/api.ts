@@ -1,3 +1,3 @@
-import { AuthApiFactory } from '@/apiClient';
+import { AuthApi } from '@/apiClient';
 
-export const authApi = AuthApiFactory();
+export const authApi = new AuthApi(undefined, process.env.API_URL);
