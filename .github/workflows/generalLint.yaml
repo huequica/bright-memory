@@ -28,5 +28,5 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           reporter: github-pr-review
-          eslint-flags: --ext .js,.ts .
+          eslint_flags: --ext .js,.ts,.jsx,.tsx .
           workdir: packages/general

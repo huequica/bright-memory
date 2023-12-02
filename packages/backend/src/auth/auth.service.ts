@@ -41,7 +41,9 @@ export class AuthService {
     };
 
     return {
-      access_token: this.jwtService.sign(payload),
+      id: user.loginName,
+      name: user.screenName,
+      accessToken: this.jwtService.sign(payload),
     };
   }
 }

@@ -89,10 +89,16 @@ components:
     LoginResponse:
       type: object
       properties:
-        access_token:
+        id:
+          type: string
+        name:
+          type: string
+        accessToken:
           type: string
       required:
-        - access_token
+        - id
+        - name
+        - accessToken
     GetProfileResponse:
       type: object
       properties:
