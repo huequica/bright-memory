@@ -5,7 +5,7 @@ import { authApi } from '@/lib';
 /**
  * @see https://zenn.dev/junnuj/articles/fb0ca45967c6c2
  */
-export default NextAuth({
+const handler = NextAuth({
   session: {
     strategy: 'jwt',
   },
@@ -48,3 +48,5 @@ export default NextAuth({
     },
   },
 });
+
+export { handler as GET, handler as POST };
