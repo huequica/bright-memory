@@ -1,6 +1,4 @@
-export * from './Alert';
-export * from './Button';
-export * from './Form';
-export * from './layout';
-
-export { Stack } from '@mui/material';
+export * from "./Alert";
+export * from "./Button";
+export * from "./Form";
+export * from "./layout";

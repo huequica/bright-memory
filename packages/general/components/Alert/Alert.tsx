@@ -1,7 +1,7 @@
 import { Alert as MUIAlert, AlertProps, AlertTitle } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
-type AlertType = NonNullable<AlertProps['severity']>
+export type AlertType = NonNullable<AlertProps['severity']>
 
 interface Props {
   type: AlertType;
