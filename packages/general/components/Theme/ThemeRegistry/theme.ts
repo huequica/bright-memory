@@ -14,5 +14,5 @@ export const defaultTheme = createTheme(
       body2: { fontFamily: GoogleInterFont.style.fontFamily },
     },
   },
-  {} satisfies ThemeOptions,
+  {} satisfies ThemeOptions
 );

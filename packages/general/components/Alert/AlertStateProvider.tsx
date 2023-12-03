@@ -1,12 +1,13 @@
-import { Snackbar } from "@mui/material";
+'use client';
+import { Snackbar } from '@mui/material';
 import {
   createContext,
   FC,
   PropsWithChildren,
   useContext,
   useState,
-} from "react";
-import { AlertType, Alert } from "./Alert";
+} from 'react';
+import { AlertType, Alert } from './Alert';
 
 type Opener = (type: AlertType, message: string) => Promise<void>;
 
@@ -18,7 +19,7 @@ const _useContext = () => {
   const ctx = useContext(Context);
 
   if (!ctx) {
-    throw new Error("useAlert must be used with in AlertProvider!");
+    throw new Error('useAlert must be used with in AlertProvider!');
   }
   return ctx;
 };
