@@ -2,8 +2,11 @@
 import { NextPage } from 'next';
 import { signIn } from 'next-auth/react';
 import { LoginForm } from './components';
+import { useAlert } from '@/components';
 
 const LoginPage: NextPage = () => {
+  const { open } = useAlert();
+
   return (
     <LoginForm
       onSubmit={async (values) => {
@@ -14,11 +17,11 @@ const LoginPage: NextPage = () => {
         })
           .then((res) => {
             if (res?.error) {
-              window.alert('error');
+              open('error', 'error occurred');
             }
           })
           .catch((error) => {
-            window.alert('error occurred');
+            open('error', 'error occurred');
             console.error(error);
           });
       }}
