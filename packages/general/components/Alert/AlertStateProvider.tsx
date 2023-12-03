@@ -44,7 +44,18 @@ export const AlertProvider: FC<PropsWithChildren> = ({ children }) => {
           setState(undefined);
         }}
       >
-        <div>{state && <Alert type={state.type}>{state.message}</Alert>}</div>
+        <div>
+          {state && (
+            <Alert
+              type={state.type}
+              onClose={() => {
+                setState(undefined);
+              }}
+            >
+              {state.message}
+            </Alert>
+          )}
+        </div>
       </Snackbar>
       {children}
     </Context.Provider>
