@@ -10,12 +10,14 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Add from '@mui/icons-material/Add';
+import { useAlert } from '@/components';
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const Default: React.FC<Props> = ({ children }) => {
+  const { open } = useAlert();
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -35,7 +37,13 @@ export const Default: React.FC<Props> = ({ children }) => {
               Bright-Memory
             </Typography>
 
-            <Button color="inherit" startIcon={<Add />}>
+            <Button
+              color="inherit"
+              startIcon={<Add />}
+              onClick={async () => {
+                await open('info', 'WIP');
+              }}
+            >
               Create New Entry
             </Button>
           </Toolbar>
