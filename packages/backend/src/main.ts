@@ -12,6 +12,10 @@ import yaml from 'yaml';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.enableCors({
+    origin: process.env.CLIENT_URL,
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Bright-Memory-API')
