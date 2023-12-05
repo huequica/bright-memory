@@ -9,10 +9,11 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { EntryService } from './entry.service';
+import { Entry } from './documentClasses';
 import { CreateEntryDTO, SearchEntryDTO } from '@/schemas/entry/entry.dto';
 import { UserDocument } from '@/schemas/user/user.schema';
 import { EntryDocument } from '@/schemas/entry/entry.schema';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('entry')
 @UseGuards(AuthGuard('jwt'))
@@ -39,6 +40,7 @@ export class EntryController {
   /**
    * TODO: 検索の件数とページングの実装
    */
+  @ApiOkResponse({ type: [Entry] })
   @Post('search')
   async search(
     @Body() search: SearchEntryDTO,

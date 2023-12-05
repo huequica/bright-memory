@@ -39,6 +39,73 @@ export interface CreateEntryDTO {
 /**
  * 
  * @export
+ * @interface Entry
+ */
+export interface Entry {
+    /**
+     * for internal management
+     * @type {string}
+     * @memberof Entry
+     */
+    '_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Entry
+     */
+    'owner': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Entry
+     */
+    'url': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Entry
+     */
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Entry
+     */
+    'note': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Entry
+     */
+    'ogpImageLink': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Entry
+     */
+    'isFavorite': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof Entry
+     */
+    'version': number;
+    /**
+     * ISO String Date
+     * @type {string}
+     * @memberof Entry
+     */
+    'createdAt': string;
+    /**
+     * ISO String Date
+     * @type {string}
+     * @memberof Entry
+     */
+    'updatedAt': string;
+}
+/**
+ * 
+ * @export
  * @interface GetProfileResponse
  */
 export interface GetProfileResponse {
@@ -518,7 +585,7 @@ export const EntryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search(searchEntryDTO: SearchEntryDTO, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async search(searchEntryDTO: SearchEntryDTO, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Entry>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.search(searchEntryDTO, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -556,7 +623,7 @@ export const EntryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(searchEntryDTO: SearchEntryDTO, options?: any): AxiosPromise<void> {
+        search(searchEntryDTO: SearchEntryDTO, options?: any): AxiosPromise<Array<Entry>> {
             return localVarFp.search(searchEntryDTO, options).then((request) => request(axios, basePath));
         },
     };

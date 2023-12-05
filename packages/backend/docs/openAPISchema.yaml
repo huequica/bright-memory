@@ -74,8 +74,14 @@ paths:
             schema:
               $ref: '#/components/schemas/SearchEntryDTO'
       responses:
-        '201':
+        '200':
           description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Entry'
       tags: *a2
 info:
   title: Bright-Memory-API
@@ -168,3 +174,40 @@ components:
           type: boolean
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Entry:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: for internal management
+        owner:
+          type: string
+        url:
+          type: string
+        title:
+          type: string
+        note:
+          type: string
+        ogpImageLink:
+          type: string
+        isFavorite:
+          type: boolean
+        version:
+          type: number
+        createdAt:
+          type: string
+          description: ISO String Date
+        updatedAt:
+          type: string
+          description: ISO String Date
+      required:
+        - _id
+        - owner
+        - url
+        - title
+        - note
+        - ogpImageLink
+        - isFavorite
+        - version
+        - createdAt
+        - updatedAt
