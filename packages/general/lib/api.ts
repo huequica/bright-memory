@@ -19,11 +19,7 @@ axiosClient.interceptors.request.use(async (config) => {
   return config;
 });
 
-export const authApi = new AuthApi(
-  undefined,
-  process.env.NEXT_PUBLIC_API_URL,
-  axiosClient
-);
+export const authApi = new AuthApi(undefined, process.env.NEXT_PUBLIC_API_URL);
 
 export const entryApi = new EntryApi(
   undefined,
