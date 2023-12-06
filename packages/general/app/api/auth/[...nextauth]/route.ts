@@ -24,7 +24,6 @@ const handler = NextAuth({
 
         const res = await authApi.login(credentials.id, credentials.password);
 
-        console.log(res.data.accessToken);
         return res.data;
       },
     }),
@@ -33,15 +32,19 @@ const handler = NextAuth({
     signIn: '/login',
   },
   callbacks: {
-    jwt: ({ token, user }) => {
-      token.id = user.id;
-      token.name = user.name;
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.accessToken = user.accessToken;
+      }
       return token;
     },
 
-    session: ({ session, token }) => {
+    async session({ session, token }) {
       session.user.id = token.id;
       session.user.name = token.name;
+      session.user.accessToken = token.accessToken;
       return session;
     },
   },
