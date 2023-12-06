@@ -2,7 +2,6 @@ import React from 'react';
 import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
 import { Default } from '@/layout/default';
 import { NextAuthProvider } from '@/components/Theme/ThemeRegistry/NextAuthProvider';
-import { getServerSession } from 'next-auth';
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,12 +13,10 @@ interface Props {
 }
 
 const RootLayout = async ({ children }: Props) => {
-  const session = await getServerSession();
-  console.log(session);
   return (
     <html lang="ja">
       <body>
-        <NextAuthProvider session={session}>
+        <NextAuthProvider>
           <ThemeRegistry>
             <Default>{children}</Default>
           </ThemeRegistry>
