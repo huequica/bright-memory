@@ -14,7 +14,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors({
     origin: process.env.CLIENT_URL,
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+    allowedHeaders:
+      'Origin, X-Requested-With, Content-Type, Accept, authorization',
   });
 
   const config = new DocumentBuilder()
