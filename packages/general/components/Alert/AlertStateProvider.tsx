@@ -1,5 +1,4 @@
 'use client';
-import { Snackbar } from '@mui/material';
 import {
   createContext,
   FC,
@@ -7,6 +6,7 @@ import {
   useContext,
   useState,
 } from 'react';
+import { Snackbar } from '@mui/material';
 import { AlertType, Alert } from './Alert';
 
 type Opener = (type: AlertType, message: string) => Promise<void>;

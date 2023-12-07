@@ -1,6 +1,6 @@
 import React from 'react';
-import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
 import { Default } from '@/layout/default';
+import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
 
 export const metadata = {
   title: 'Create Next App',
