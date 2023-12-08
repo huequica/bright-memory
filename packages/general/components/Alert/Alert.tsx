@@ -1,5 +1,5 @@
-import { Alert as MUIAlert, AlertProps, AlertTitle } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
+import { Alert as MUIAlert, AlertProps, AlertTitle } from '@mui/material';
 
 export type AlertType = NonNullable<AlertProps['severity']>;
 type AlertOnClose = NonNullable<AlertProps['onClose']>;

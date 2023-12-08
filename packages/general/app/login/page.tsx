@@ -1,9 +1,9 @@
 'use client';
-import { NextPage } from 'next';
 import { signIn } from 'next-auth/react';
-import { LoginForm } from './components';
-import { useAlert } from '@/components';
 import { useRouter } from 'next/navigation';
+import { NextPage } from 'next';
+import { useAlert } from '@/components';
+import { LoginForm } from './components';
 
 const LoginPage: NextPage = () => {
   const { open } = useAlert();

@@ -1,9 +1,9 @@
 'use client';
-import { Meta, StoryObj } from '@storybook/react';
-import { AlertProvider, useAlert } from './AlertStateProvider';
 import { FC } from 'react';
-import { AlertType } from './Alert';
+import { Meta, StoryObj } from '@storybook/react';
 import { Button, Stack } from '@/components';
+import { AlertProvider, useAlert } from './AlertStateProvider';
+import { AlertType } from './Alert';
 
 const meta = {
   title: 'components/AlertProvider',
