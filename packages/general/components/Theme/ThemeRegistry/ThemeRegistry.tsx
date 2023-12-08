@@ -3,9 +3,9 @@
 import { FC, ReactNode } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { NextAppDirEmotionCacheProvider } from './EmotionCache';
-import { defaultTheme } from './theme';
 import { AlertProvider } from '@/components';
+import { defaultTheme } from './theme';
+import { NextAppDirEmotionCacheProvider } from './EmotionCache';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 interface Props {
