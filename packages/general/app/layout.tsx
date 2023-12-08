@@ -1,7 +1,7 @@
 import React from 'react';
 import { Default } from '@/layout/default';
-import { NextAuthProvider } from '@/components/Theme/ThemeRegistry/NextAuthProvider';
 import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
+import { NextAuthProvider } from '@/components/Theme/ThemeRegistry/NextAuthProvider';
 
 export const metadata = {
   title: 'Create Next App',

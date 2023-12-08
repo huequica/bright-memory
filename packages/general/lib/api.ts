@@ -1,6 +1,6 @@
-import { AuthApi, EntryApi } from '@/apiClient';
 import { getSession } from 'next-auth/react';
 import globalAxios from 'axios';
+import { AuthApi, EntryApi } from '@/apiClient';
 
 const getAccessToken = async (): Promise<string> => {
   const session = await getSession();
