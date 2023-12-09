@@ -1,6 +1,7 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { Default } from '@/layout/default';
 import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
+import { NextAuthProvider } from '@/components/Theme/ThemeRegistry/NextAuthProvider';
 
 export const metadata = {
   title: 'Create Next App',
@@ -8,20 +9,18 @@ export const metadata = {
 };
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const RootLayout: React.FC<Props> = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const RootLayout = async ({ children }: Props) => {
   return (
     <html lang="ja">
       <body>
-        <ThemeRegistry>
-          <Default>{children}</Default>
-        </ThemeRegistry>
+        <NextAuthProvider>
+          <ThemeRegistry>
+            <Default>{children}</Default>
+          </ThemeRegistry>
+        </NextAuthProvider>
       </body>
     </html>
   );
