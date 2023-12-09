@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { Default } from '@/layout/default';
 import { ThemeRegistry } from '@/components/Theme/ThemeRegistry/ThemeRegistry';
 import { NextAuthProvider } from '@/components/Theme/ThemeRegistry/NextAuthProvider';
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const RootLayout = async ({ children }: Props) => {

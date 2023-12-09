@@ -50,7 +50,7 @@ export const Default: React.FC<Props> = ({ children }) => {
         </AppBar>
       </Box>
 
-      <Box sx={{ ml: 2, mr: 2 }}>{children}</Box>
+      <Box sx={{ m: 2 }}>{children}</Box>
     </>
   );
 };
