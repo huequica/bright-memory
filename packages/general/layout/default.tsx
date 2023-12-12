@@ -1,5 +1,6 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   AppBar,
   IconButton,
@@ -10,6 +11,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Add from '@mui/icons-material/Add';
+import { GlobalDrawer } from '@/components/GlobalDrawer/GlobalDrawer';
 import { useAlert } from '@/components';
 
 interface Props {
@@ -17,7 +19,9 @@ interface Props {
 }
 
 export const Default: React.FC<Props> = ({ children }) => {
-  const { open } = useAlert();
+  const router = useRouter();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { open: openAlert } = useAlert();
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -29,6 +33,9 @@ export const Default: React.FC<Props> = ({ children }) => {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={() => {
+                setDrawerOpen((prev) => !prev);
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -41,7 +48,7 @@ export const Default: React.FC<Props> = ({ children }) => {
               color="inherit"
               startIcon={<Add />}
               onClick={async () => {
-                await open('info', 'WIP');
+                await openAlert('info', 'WIP');
               }}
             >
               Create New Entry
@@ -49,6 +56,19 @@ export const Default: React.FC<Props> = ({ children }) => {
           </Toolbar>
         </AppBar>
       </Box>
+      <GlobalDrawer
+        open={drawerOpen}
+        onMove={(destination) => {
+          router.push(destination);
+        }}
+        onClose={() => {
+          setDrawerOpen((prev) => !prev);
+        }}
+        onLogout={async () => {
+          // TODO: ログアウト処理を書く
+          await openAlert('info', 'WIP');
+        }}
+      />
 
       <Box sx={{ m: 2 }}>{children}</Box>
     </>
