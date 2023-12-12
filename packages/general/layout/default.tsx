@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import {
   AppBar,
@@ -20,6 +20,7 @@ interface Props {
 }
 
 export const Default: React.FC<Props> = ({ children }) => {
+  const { status } = useSession();
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { open: openAlert } = useAlert();
@@ -28,32 +29,36 @@ export const Default: React.FC<Props> = ({ children }) => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="primary">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={() => {
-                setDrawerOpen((prev) => !prev);
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
+            {status === 'authenticated' && (
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                onClick={() => {
+                  setDrawerOpen((prev) => !prev);
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
 
             <Typography variant="h5" sx={{ flexGrow: 1 }}>
               Bright-Memory
             </Typography>
 
-            <Button
-              color="inherit"
-              startIcon={<Add />}
-              onClick={async () => {
-                await openAlert('info', 'WIP');
-              }}
-            >
-              Create New Entry
-            </Button>
+            {status === 'authenticated' && (
+              <Button
+                color="inherit"
+                startIcon={<Add />}
+                onClick={async () => {
+                  await openAlert('info', 'WIP');
+                }}
+              >
+                Create New Entry
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
