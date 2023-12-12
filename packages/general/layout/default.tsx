@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import {
   AppBar,
@@ -65,8 +66,7 @@ export const Default: React.FC<Props> = ({ children }) => {
           setDrawerOpen((prev) => !prev);
         }}
         onLogout={async () => {
-          // TODO: ログアウト処理を書く
-          await openAlert('info', 'WIP');
+          await signOut();
         }}
       />
 
