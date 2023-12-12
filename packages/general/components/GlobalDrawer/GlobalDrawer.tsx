@@ -31,7 +31,7 @@ export const GlobalDrawer: FC<Props> = ({
   onClose,
   onLogout,
 }) => {
-  const entries: DrawerEntry[] = [
+  const generalItems: DrawerEntry[] = [
     {
       label: 'Entries',
       icon: <EventNoteIcon />,
@@ -43,7 +43,7 @@ export const GlobalDrawer: FC<Props> = ({
     <Drawer open={open} onClose={onClose}>
       <Box>
         <List>
-          {entries.map((entry, index) => (
+          {generalItems.map((entry, index) => (
             <ListItem key={`entry-${index}`}>
               <ListItemButton
                 onClick={() => {
