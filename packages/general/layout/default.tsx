@@ -1,5 +1,7 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import {
   AppBar,
   IconButton,
@@ -10,6 +12,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Add from '@mui/icons-material/Add';
+import { GlobalDrawer } from '@/components/GlobalDrawer/GlobalDrawer';
 import { useAlert } from '@/components';
 
 interface Props {
@@ -17,38 +20,60 @@ interface Props {
 }
 
 export const Default: React.FC<Props> = ({ children }) => {
-  const { open } = useAlert();
+  const { status } = useSession();
+  const router = useRouter();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { open: openAlert } = useAlert();
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="primary">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+            {status === 'authenticated' && (
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                onClick={() => {
+                  setDrawerOpen((prev) => !prev);
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
 
             <Typography variant="h5" sx={{ flexGrow: 1 }}>
               Bright-Memory
             </Typography>
 
-            <Button
-              color="inherit"
-              startIcon={<Add />}
-              onClick={async () => {
-                await open('info', 'WIP');
-              }}
-            >
-              Create New Entry
-            </Button>
+            {status === 'authenticated' && (
+              <Button
+                color="inherit"
+                startIcon={<Add />}
+                onClick={async () => {
+                  await openAlert('info', 'WIP');
+                }}
+              >
+                Create New Entry
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
+      <GlobalDrawer
+        open={drawerOpen}
+        onMove={(destination) => {
+          router.push(destination);
+        }}
+        onClose={() => {
+          setDrawerOpen((prev) => !prev);
+        }}
+        onLogout={async () => {
+          await signOut();
+        }}
+      />
 
       <Box sx={{ m: 2 }}>{children}</Box>
     </>
