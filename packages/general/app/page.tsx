@@ -1,13 +1,13 @@
 'use client';
 import { NextPage } from 'next';
-import { EntryCard } from '@/components/EntryCard/EntryCard';
-import { Grid } from '@/components';
+import { Grid, EntryCard, Loading } from '@/components';
 import { useEntries } from './_hooks/entry';
 
 const Home: NextPage = () => {
   const { data, isLoading } = useEntries({ pageNumber: 0 });
+
   if (!data || isLoading) {
-    return <>Loading...</>;
+    return <Loading open={true} />;
   }
 
   return (
